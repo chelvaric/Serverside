@@ -1,13 +1,13 @@
 ﻿html {
-    background-color: #e2e2e2;
+    background-color: #348de0;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #fff;
+    background-color: #348de0;
     border-top: solid 10px #000;
-    color: #333;
+    color: white;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -15,7 +15,7 @@ body {
 }
 
 a {
-    color: #333;
+    color: white;
     outline: none;
     padding-left: 3px;
     padding-right: 3px;
@@ -24,11 +24,11 @@ a {
 
     a:link, a:visited,
     a:active, a:hover {
-        color: #333;
+        color: white;
     }
 
     a:hover {
-        background-color: #c7d1d6;
+        background-color: #4187c9;
     }
 
 header, footer, hgroup,
@@ -60,7 +60,7 @@ mark {
 
 h1, h2, h3,
 h4, h5, h6 {
-    color: #000;
+    color: white;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -71,6 +71,7 @@ h1 {
 
 h2 {
     font-size: 1.75em;
+    text-align:center;
 }
 
 h3 {
@@ -99,7 +100,7 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+    background-color: #2e7cc5;
     clear: both;
     padding-bottom: 35px;
 }
@@ -120,7 +121,7 @@ header .content-wrapper {
 
 footer {
     clear: both;
-    background-color: #e2e2e2;
+    background-color: #24639f;
     font-size: .8em;
     height: 100px;
 }
@@ -179,10 +180,14 @@ footer {
 
 /* menu
 ----------------------------------------------------------*/
+
+
+
 ul#menu {
-    font-size: 1.3em;
+    color:white;
+    font-size: 35px;
     font-weight: 600;
-    margin: 0 0 5px;
+    margin: -20px 360px 0 5px;
     padding: 0;
     text-align: right;
 }
@@ -190,12 +195,12 @@ ul#menu {
     ul#menu li {
         display: inline;
         list-style: none;
-        padding-left: 15px;
+        padding-left: -30px;
     }
 
         ul#menu li a {
             background: none;
-            color: #999;
+            color: white;
             text-decoration: none;
         }
 
@@ -209,17 +214,17 @@ ul#menu {
 ----------------------------------------------------------*/
 /* featured */
 .featured {
-    background-color: #fff;
+    background-color: #348de0;
 }
 
     .featured .content-wrapper {
-        background-color: #7ac0da;
+        background-color: #348de0;
         background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
         background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
         background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
         background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
         background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        color: #3e5667;
+        color: white;
         padding: 20px 40px 30px 40px;
     }
 
@@ -307,6 +312,7 @@ ol.round {
 article {
     float: left;
     width: 70%;
+    color:white;
 }
 
 aside {
@@ -448,18 +454,23 @@ textarea {
         border: inherit;
         width: auto;
     }
-
+input[type="combobox"] {
+    background-color: #48a5fc;
+   border: 1px solid #13283b;
+   color:white;
+}
     input[type="submit"],
     input[type="button"],
     button {
-        background-color: #d3dce0;
-        border: 1px solid #787878;
+        background-color: #48a5fc;
+        border: 1px solid #13283b;
         cursor: pointer;
         font-size: 1.2em;
         font-weight: 600;
         padding: 7px;
         margin-right: 8px;
         width: auto;
+        color:white;
     }
 
     td input[type="submit"],
@@ -531,19 +542,20 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     margin-top: 0.75em;
-    border: 0 none;
+    border: 2px solid #244e75;
 }
 
 th {
     font-size: 1.2em;
-    text-align: left;
-    border: none 0px;
+    text-align: center;
+    border: thin 1px;
     padding-left: 0;
 }
 
     th a {
         display: block;
         position: relative;
+        text-align: center;
     }
 
     th a:link, th a:visited, th a:active, th a:hover {
@@ -579,9 +591,11 @@ th {
 
 td {
     padding: 0.25em 2em 0.25em 0em;
-    border: 0 none;
+    
 }
-
+tr {
+    border:1px solid #244e75;
+}
 tr.pager td {
     padding: 0 0.25em 0 0;
 }
@@ -739,6 +753,10 @@ tr.pager td {
 
     /* footer
     ----------------------------------------------------------*/
+    footer {
+
+        background-color:#348de0;
+    }
     footer .float-left,
     footer .float-right {
         float: none;
@@ -754,3 +772,51 @@ tr.pager td {
             margin: 0;
         }
 }
+/* detail
+-----------------------------------------------------*/
+
+.detail {
+  
+
+    font-size:medium;
+    border: 0px none;
+
+
+}
+
+.Descrp {
+
+  width: 600px;
+  height:300px;
+  margin: 20px 30px 0 0;
+  float:right;
+
+}
+
+.title {
+
+   text-align:center;
+   font-size:25px;
+   text-decoration:underline;
+   margin: -20px 60px 0 0 ;
+}
+
+.pic {
+  margin-top:25px;
+  float:left;
+}
+
+.icons {
+  
+    margin-top:-30px;
+    margin-left:480px;
+
+}
+
+.content {
+  
+    width:900px;
+    margin-left:150px;
+      float:left;
+}
+

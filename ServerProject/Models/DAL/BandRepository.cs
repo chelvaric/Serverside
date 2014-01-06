@@ -28,7 +28,8 @@ namespace ServerProject.Models.DAL
                 temp.Twitter = Reader["Twitter"].ToString();
                 lijst.Add(temp);
             }
-
+            if (Reader != null)
+                Reader.Close();  
             AddGenres(lijst);
             return lijst;
 
@@ -39,7 +40,7 @@ namespace ServerProject.Models.DAL
            Band temp = new Band();
             string sql = "SELECT * FROM Bands WHERE ID = @ID";
             DbParameter par = Database.AddParameter("@ID", id);
-            DbDataReader Reader = Database.GetData(sql);
+            DbDataReader Reader = Database.GetData(sql,par);
             while (Reader.Read())
             {
             
@@ -51,7 +52,8 @@ namespace ServerProject.Models.DAL
                 temp.Twitter = Reader["Twitter"].ToString();
                
             }
-
+            if (Reader != null)
+                Reader.Close();  
             AddGenre(temp);
             return temp;
 
@@ -72,7 +74,7 @@ namespace ServerProject.Models.DAL
         private static void AddGenre(Band item)
         {
             ObservableCollection<Genre> tempLijst = new ObservableCollection<Genre>();
-            string sql = "SELECT bands_genres.*,genres.ID as GenreID,genres.name as GenreName FROM festival.bands_genres INNER JOIN festival.genres ON bands_genres.GenreID = genres.ID WHERE BandID = @BandID ";
+            string sql = "SELECT bands_genres.*,genres.ID as GenreID,genres.name as GenreName FROM bands_genres INNER JOIN genres ON bands_genres.GenreID = genres.ID WHERE BandID = @BandID ";
             DbParameter par = Database.AddParameter("@BandID", item.ID);
             DbDataReader reader = Database.GetData(sql, par);
             if (reader != null)
@@ -88,6 +90,8 @@ namespace ServerProject.Models.DAL
                     tempLijst.Add(temp);
 
                 }
+                if (reader != null)
+                    reader.Close();  
                 item.Genres = tempLijst;
 
             }

@@ -8,7 +8,7 @@ using DBHelper;
 
 namespace ServerProject.Models
 {
-    public class Genre : INameId
+    public class Genre 
     {
         private string _iD;
 

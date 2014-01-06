@@ -1,0 +1,39 @@
+﻿@model ServerProject.Models.Band
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<fieldset>
+    <legend>Band</legend>
+    <div class="title">
+       <h3> @Html.DisplayFor(model => model.Name)</h3>
+    </div>
+  <div class="content">
+    
+     <div class="Descrp">
+      <p>  @Html.DisplayFor(model => model.Description)</p>
+    </div>
+  
+   
+    <div class="pic">
+        <img src="@Model.Picture" width="240" height="200" />
+        </div>
+      </div>
+   
+
+ 
+<div class="icons">
+         <a href="http://www.@Model.Facebook" target="_blank"> <img  src="http://amazingworld.xtgem.com/images/facebook_50x50.gif" width="50" height="50"/> </a>
+
+  
+        <a href="http://www.@Model.Twitter" target="_blank"><img src="http://m.meningitisnow.org/files/5713/3413/5764/icon-twitter-50x50-1.png"  width="50" height="50"/></a>
+    </div>
+  
+</fieldset>
+<p>
+  
+    @Html.ActionLink("Back to List", "Index")
+</p>

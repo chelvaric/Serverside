@@ -10,9 +10,9 @@ namespace ServerProject.Models.DAL
 {
     public class GenreRepository
     {
-        public static ObservableCollection<INameId> Waardes()
+        public static ObservableCollection<Genre> Waardes()
         {
-            ObservableCollection<INameId> lijst = new ObservableCollection<INameId>();
+            ObservableCollection<Genre> lijst = new ObservableCollection<Genre>();
             string sql = "SELECT * FROM Festival.Genres";
             DbDataReader reader = Database.GetData(sql);
             while (reader.Read())
@@ -22,7 +22,8 @@ namespace ServerProject.Models.DAL
                 lijst.Add(new Genre() { Name = reader["name"].ToString(), ID = reader["ID"].ToString() });
 
             }
-
+            if (reader != null)
+                reader.Close();  
 
             return lijst;
         }
@@ -34,17 +35,6 @@ namespace ServerProject.Models.DAL
 
 
         }
-        public void Delete()
-        {
-
-        }
-        public void Edit(INameId temp)
-        {
-            string sql = "UPDATE genres SET name= @name WHERE ID = @ID";
-            DbParameter Name = Database.AddParameter("@name", temp.Name);
-            DbParameter ID = Database.AddParameter("@ID", temp.ID);
-            Database.ModifyData(sql, Name, ID);
-
-        }
+       
     }
 }

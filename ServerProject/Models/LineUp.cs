@@ -29,9 +29,9 @@ namespace ServerProject.Models
             set { _till = value; }
         }
 
-        private Stage _stage;
+        private int _stage;
 
-        public Stage Stage
+        public int Stage
         {
             get { return _stage; }
             set { _stage = value; }
@@ -45,9 +45,9 @@ namespace ServerProject.Models
             set { _date = value; }
         }
 
-        private Band _band;
+        private int _band;
 
-        public Band Band
+        public int Band
         {
             get { return _band; }
             set { _band = value; }

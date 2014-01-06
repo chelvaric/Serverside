@@ -11,10 +11,10 @@ namespace ServerProject.Models.DAL
     public class StageRepository
     {
 
-        public static ObservableCollection<INameId> Waardes()
+        public static ObservableCollection<Stage> Waardes()
         {
-            ObservableCollection<INameId> lijst = new ObservableCollection<INameId>();
-            string sql = "SELECT * FROM Festival.Stages";
+            ObservableCollection<Stage> lijst = new ObservableCollection<Stage>();
+            string sql = "SELECT * FROM Stages";
             DbDataReader reader = Database.GetData(sql);
             while (reader.Read())
             {
@@ -23,16 +23,17 @@ namespace ServerProject.Models.DAL
                 lijst.Add(new Stage() { Name = reader["name"].ToString(), ID = reader["ID"].ToString() });
 
             }
-
+            if (reader != null)
+                reader.Close();  
             return lijst;
         }
 
-        public static Stage GetbyID(DbTransaction tran,int id)
+        public static Stage GetbyID(int id)
         {
-            ObservableCollection<INameId> lijst = new ObservableCollection<INameId>();
-            string sql = "SELECT * FROM Festival.Stages WHERE ID = @ID";
+            ObservableCollection<Stage> lijst = new ObservableCollection<Stage>();
+            string sql = "SELECT * FROM Stages WHERE ID = @ID";
             DbParameter par = Database.AddParameter("@ID", id);
-            DbDataReader reader = Database.GetData(tran,sql,par);
+            DbDataReader reader = Database.GetData(sql,par);
             Stage stage = null;
             while (reader.Read())
             {
@@ -41,7 +42,8 @@ namespace ServerProject.Models.DAL
                stage =new Stage() { Name = reader["name"].ToString(), ID = reader["ID"].ToString() };
 
             }
-
+            if (reader != null)
+                reader.Close();  
             return stage;
         }
 
@@ -53,14 +55,6 @@ namespace ServerProject.Models.DAL
 
 
         }
-        public void Delete()
-        { }
-        public static void Edit(INameId temp)
-        {
-            string sql = "UPDATE stages SET Name= @name WHERE ID = @ID";
-            DbParameter Name = Database.AddParameter("@name", temp.Name);
-            DbParameter ID = Database.AddParameter("@ID", temp.ID);
-            Database.ModifyData(sql, Name, ID);
-        }
+       
     }
 }

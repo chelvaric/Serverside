@@ -1,0 +1,97 @@
+﻿@model ServerProject.ModelView.LineUpVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Line Up</h2>
+  @using (Html.BeginForm()) {   
+<select name="Stage">
+    <option> sorteer op Stage </option>
+  
+    @foreach (var item in Model.Stages)
+    { 
+       <option value="@item.ID" > @item.Name </option>
+    
+    }
+
+</select>
+<select name="Date">
+    <option> sorteer op Dag </option>
+  
+    @foreach (var item in Model.Dates)
+    { 
+       <option > @item </option>
+    
+    }
+
+</select>
+
+<input type="submit" name="Search"/>
+}
+
+@if (User.IsInRole("Administartor"))
+{
+    <table>
+
+        <thead>
+            <tr>
+                   <td>Naam</td>
+                 <td>Email</td>
+                 <td>Amount</td>
+                 <td>Type Ticket</td>
+
+
+            </tr>
+
+
+        </thead>
+        <tbody>
+            @foreach(var item in Model.Tickets){
+            <tr>
+                <td>@item.TicketHolder</td>
+                 <td>@item.TicketHolderEmail</td>
+                 <td>@item.Amount</td>
+                 <td>@item.TicketType</td>
+
+            </tr>
+            }
+        </tbody>
+
+
+    </table>
+
+}
+<table>
+   <thead>
+       <tr>
+           <td><h3>Picture</h3></td>
+           <td><h3>Band</h3></td>
+           <td><h3> Stage</h3></td>
+           <td><h3> Start Time</h3></td>
+           <td><h3> Stop Time</h3></td>
+           <td><h3>Day</h3></td>
+         
+
+       </tr>
+
+   </thead>
+    @foreach(var item in Model.LineUps){
+     
+         <tr>
+           <td> <img src="@Model.Bands[item.Band-1].Picture" width="100" height="100" />  </td>
+           <td>  @Model.Bands[item.Band-1].Name</td>
+        <td>  @Model.Stages[item.Stage-1].Name</td>
+        <td>  @item.From</td>
+        <td> @item.Till</td>
+        <td>@item.Date</td>
+        <td>@Html.ActionLink("Details", "Details", new {  id= item.Band}) </td>
+            </tr>
+           
+       
+       
+    }      
+
+    </table>
+ 
+

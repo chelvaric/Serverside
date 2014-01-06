@@ -1,0 +1,55 @@
+﻿@model ServerProject.ModelView.TicketVM
+
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2>Order</h2>
+
+
+@if (User.IsInRole("Admin"))
+{
+
+    Html.RenderPartial("Index", Model.Tickets);
+
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TicketVM</legend>
+
+        <p>
+            <label> Naam: </label>
+          
+            <input type="text" name="Name"/>
+            <label>Email</label>
+            <input type="text" name="Email" />
+            <label> Amount </label>
+            <input type="number" min="1" name="Amount" />
+            <select name="ID">
+            @foreach (var item in Model.TicketTypes)
+            { 
+                   <option value="@item.ID"> @item.Name; item.Price </option>
+            }
+                </select>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+@if (Model.TicketPersoon != null)
+{
+
+    Html.RenderPartial("Index", Model.TicketPersoon);
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

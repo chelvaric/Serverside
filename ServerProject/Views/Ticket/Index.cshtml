@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ServerProject.Models.Ticket>
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketHolder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketHolderEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+           
+            Ticket Type
+
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketHolder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketHolderEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketType.Name)
+        </td>
+        <td>
+            <label> </label>
+        </td>
+    </tr>
+}
+
+</table>

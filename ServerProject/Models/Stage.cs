@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ServerProject.Models
 {
-    public class Stage:INameId
+    public class Stage
     {
 
         private string _id;
